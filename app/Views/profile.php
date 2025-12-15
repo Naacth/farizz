@@ -64,64 +64,84 @@
         </div>
 
         <?php if (!empty($profiles)): ?>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                <?php foreach ($profiles as $profile): ?>
-                    <div class="group relative">
-                        <!-- Glow Effect -->
-                        <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-3xl blur-2xl opacity-30 group-hover:opacity-60 transition-opacity duration-500"></div>
-                        
-                        <div class="relative bg-white p-8 rounded-3xl shadow-2xl border border-gray-100 transform transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl">
-                            <!-- Centered Vertical Layout -->
-                            <div class="flex flex-col items-center text-center">
-                                <!-- Photo Section -->
-                                <div class="mb-6">
-                                    <?php if ($profile['photo']): ?>
-                                        <div class="relative">
-                                            <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-xl opacity-50"></div>
-                                            <img src="<?= base_url('uploads/' . $profile['photo']) ?>" 
-                                                 alt="<?= esc($profile['name']) ?>" 
-                                                 class="relative w-32 h-32 rounded-full object-cover border-4 border-white shadow-xl group-hover:scale-105 transition-transform duration-300">
+            <div class="flex justify-center">
+                <div class="w-full max-w-4xl">
+                    <?php foreach ($profiles as $profile): ?>
+                        <div class="group relative">
+                            <!-- Glow Effect -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-3xl blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-500"></div>
+                            
+                            <div class="relative bg-white p-12 rounded-3xl shadow-2xl border border-gray-100 transform transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl">
+                                <!-- Centered Vertical Layout -->
+                                <div class="flex flex-col items-center text-center">
+                                    <!-- Photo Section - Larger -->
+                                    <div class="mb-8">
+                                        <?php if ($profile['photo']): ?>
+                                            <div class="relative">
+                                                <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-2xl opacity-50"></div>
+                                                <img src="<?= base_url('uploads/' . $profile['photo']) ?>" 
+                                                     alt="<?= esc($profile['name']) ?>" 
+                                                     class="relative w-48 h-48 rounded-full object-cover border-8 border-white shadow-2xl group-hover:scale-105 transition-transform duration-300">
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="w-48 h-48 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center shadow-2xl border-8 border-white">
+                                                <i class="fas fa-user text-8xl text-white"></i>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    
+                                    <!-- Name - Larger -->
+                                    <h3 class="text-5xl font-black text-gray-800 mb-8 group-hover:text-purple-600 transition-colors">
+                                        <?= esc($profile['name']) ?>
+                                    </h3>
+                                    
+                                    <!-- Contact Info Cards - Larger -->
+                                    <div class="w-full max-w-2xl space-y-6 mb-8">
+                                        <div class="flex items-center bg-purple-50 p-6 rounded-2xl border border-purple-100 shadow-lg">
+                                            <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                                                <i class="fas fa-envelope text-white text-2xl"></i>
+                                            </div>
+                                            <div class="ml-6 text-left">
+                                                <p class="text-sm text-gray-500 font-medium mb-1">Email Address</p>
+                                                <p class="text-gray-800 font-bold text-xl"><?= esc($profile['email']) ?></p>
+                                            </div>
                                         </div>
-                                    <?php else: ?>
-                                        <div class="w-32 h-32 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center shadow-xl border-4 border-white">
-                                            <i class="fas fa-user text-4xl text-white"></i>
+                                        
+                                        <div class="flex items-center bg-pink-50 p-6 rounded-2xl border border-pink-100 shadow-lg">
+                                            <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center">
+                                                <i class="fas fa-phone text-white text-2xl"></i>
+                                            </div>
+                                            <div class="ml-6 text-left">
+                                                <p class="text-sm text-gray-500 font-medium mb-1">Phone Number</p>
+                                                <p class="text-gray-800 font-bold text-xl"><?= esc($profile['phone']) ?></p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-start bg-purple-50 p-6 rounded-2xl border border-purple-100 shadow-lg">
+                                            <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                                                <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                                            </div>
+                                            <div class="ml-6 text-left">
+                                                <p class="text-sm text-gray-500 font-medium mb-1">Address</p>
+                                                <p class="text-gray-800 font-bold text-xl"><?= esc($profile['address']) ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Summary Card - Larger -->
+                                    <?php if ($profile['summary']): ?>
+                                        <div class="w-full max-w-3xl bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-l-8 border-purple-500 shadow-lg">
+                                            <h4 class="flex items-center justify-center font-black text-purple-700 mb-6 text-2xl">
+                                                <i class="fas fa-quote-left mr-3"></i>Professional Summary
+                                            </h4>
+                                            <p class="text-gray-700 leading-relaxed text-lg"><?= nl2br(esc($profile['summary'])) ?></p>
                                         </div>
                                     <?php endif; ?>
                                 </div>
-                                
-                                <!-- Name -->
-                                <h3 class="text-2xl font-black text-gray-800 mb-4 group-hover:text-purple-600 transition-colors">
-                                    <?= esc($profile['name']) ?>
-                                </h3>
-                                    
-                                <!-- Contact Info -->
-                                <div class="w-full space-y-3 mb-4 text-sm">
-                                    <div class="flex items-center justify-center bg-purple-50 p-3 rounded-xl">
-                                        <i class="fas fa-envelope text-purple-600 mr-2"></i>
-                                        <span class="text-gray-700 font-medium"><?= esc($profile['email']) ?></span>
-                                    </div>
-                                    
-                                    <div class="flex items-center justify-center bg-pink-50 p-3 rounded-xl">
-                                        <i class="fas fa-phone text-pink-600 mr-2"></i>
-                                        <span class="text-gray-700 font-medium"><?= esc($profile['phone']) ?></span>
-                                    </div>
-                                    
-                                    <div class="flex items-center justify-center bg-purple-50 p-3 rounded-xl">
-                                        <i class="fas fa-map-marker-alt text-purple-600 mr-2"></i>
-                                        <span class="text-gray-700 font-medium text-center"><?= esc($profile['address']) ?></span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Summary -->
-                                <?php if ($profile['summary']): ?>
-                                    <div class="w-full bg-gradient-to-br from-purple-50 to-pink-50 p-4 rounded-xl border-l-4 border-purple-500">
-                                        <p class="text-gray-700 text-sm leading-relaxed"><?= nl2br(esc($profile['summary'])) ?></p>
-                                    </div>
-                                <?php endif; ?>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
             <!-- Enhanced Pagination -->
