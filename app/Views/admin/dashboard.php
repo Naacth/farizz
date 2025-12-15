@@ -159,7 +159,7 @@
                     <div class="flex items-center p-3 bg-purple-50 rounded-lg hover:bg-purple-100 transition duration-200">
                         <div class="flex-shrink-0 mr-4">
                             <?php if ($profile['photo']): ?>
-                                <img src="<?= base_url('writable/uploads/' . $profile['photo']) ?>" 
+                                <img src="<?= base_url('uploads/' . $profile['photo']) ?>" 
                                      alt="<?= esc($profile['name']) ?>" 
                                      class="w-12 h-12 rounded-full object-cover border-2 border-purple-300">
                             <?php else: ?>

@@ -25,6 +25,44 @@
 <!-- Education Section -->
 <section class="py-16 bg-gradient-to-br from-gray-50 to-white">
     <div class="container mx-auto px-4">
+        <!-- Enhanced Search and Filter -->
+        <div class="max-w-5xl mx-auto mb-12">
+            <div class="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100">
+                <form method="GET" action="/education" class="flex flex-wrap gap-6">
+                    <div class="flex-1 min-w-[300px]">
+                        <label class="block text-sm font-bold text-gray-700 mb-3">
+                            <i class="fas fa-search mr-2 text-emerald-600"></i>Search Education
+                        </label>
+                        <input type="text" name="search" value="<?= esc($search) ?>" 
+                               placeholder="Search by level or institution..." 
+                               class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-emerald-200 focus:border-emerald-500 focus:outline-none transition-all text-lg">
+                    </div>
+                    <div class="w-48">
+                        <label class="block text-sm font-bold text-gray-700 mb-3">
+                            <i class="fas fa-sort mr-2 text-emerald-600"></i>Sort By
+                        </label>
+                        <select name="sort_by" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-emerald-200 focus:border-emerald-500 appearance-none bg-white text-lg font-medium">
+                            <option value="start_year" <?= $sortBy === 'start_year' ? 'selected' : '' ?>>Start Year</option>
+                            <option value="level" <?= $sortBy === 'level' ? 'selected' : '' ?>>Level</option>
+                            <option value="institution_name" <?= $sortBy === 'institution_name' ? 'selected' : '' ?>>Institution</option>
+                        </select>
+                    </div>
+                    <div class="w-32">
+                        <label class="block text-sm font-bold text-gray-700 mb-3">Order</label>
+                        <select name="sort_order" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-emerald-200 focus:border-emerald-500 appearance-none bg-white text-lg font-medium">
+                            <option value="ASC" <?= $sortOrder === 'ASC' ? 'selected' : '' ?>>↑ ASC</option>
+                            <option value="DESC" <?= $sortOrder === 'DESC' ? 'selected' : '' ?>>↓ DESC</option>
+                        </select>
+                    </div>
+                    <div class="flex items-end">
+                        <button type="submit" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 font-bold text-lg">
+                            <i class="fas fa-filter mr-2"></i>Apply
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <?php if (!empty($education)): ?>
             <div class="max-w-5xl mx-auto">
                 <!-- Timeline -->
@@ -113,6 +151,15 @@
                         <?php endforeach; ?>
                     </div>
                 </div>
+
+                <!-- Enhanced Pagination -->
+                <?php if ($pager): ?>
+                    <div class="mt-16 flex justify-center">
+                        <div class="bg-white rounded-2xl shadow-xl px-8 py-5 border border-gray-100">
+                            <?= $pager->links() ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php else: ?>
             <div class="text-center py-24">

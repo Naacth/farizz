@@ -52,7 +52,7 @@
                 <?php
                 $ext = pathinfo($activity['media'], PATHINFO_EXTENSION);
                 $isVideo = in_array($ext, ['mp4', 'avi', 'mov']);
-                $mediaUrl = base_url('writable/uploads/' . $activity['media']);
+                $mediaUrl = base_url('uploads/' . $activity['media']);
                 ?>
                 <?php if ($isVideo): ?>
                     <video controls class="max-w-xs rounded-lg shadow">

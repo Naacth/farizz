@@ -17,16 +17,20 @@ class Profile extends BaseController
 
     public function index()
     {
-        // Check if profile already exists
-        $profile = $this->profileModel->first();
-        
-        if ($profile) {
-            // Redirect to edit if profile exists
-            return redirect()->to('/admin/profile/edit/' . $profile['id']);
-        } else {
-            // Redirect to create if no profile exists
-            return redirect()->to('/admin/profile/create');
-        }
+        $search = $this->request->getGet('search') ?? '';
+        $sortBy = $this->request->getGet('sort_by') ?? 'name';
+        $sortOrder = $this->request->getGet('sort_order') ?? 'ASC';
+        $perPage = 10;
+
+        $data = [
+            'profiles' => $this->profileModel->getProfilesPaginated($perPage, $search, $sortBy, $sortOrder),
+            'pager' => $this->profileModel->pager,
+            'search' => $search,
+            'sortBy' => $sortBy,
+            'sortOrder' => $sortOrder,
+        ];
+
+        return view('admin/profile/index', $data);
     }
 
     public function create()

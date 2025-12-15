@@ -70,7 +70,7 @@
                     <tr class="hover:bg-sky-50 transition duration-200">
                         <td class="px-6 py-4">
                             <?php if ($profile['photo']): ?>
-                                <img src="<?= base_url('writable/uploads/' . $profile['photo']) ?>" 
+                                <img src="<?= base_url('uploads/' . $profile['photo']) ?>" 
                                      alt="<?= esc($profile['name']) ?>" 
                                      class="w-12 h-12 rounded-full object-cover border-2 border-sky-300">
                             <?php else: ?>
