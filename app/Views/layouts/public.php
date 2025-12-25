@@ -120,6 +120,7 @@
                     <h1 class="text-2xl font-black gradient-text">Portfolio.</h1>
                 </div>
                 
+                <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="hover:text-primary-500 transition-colors font-semibold flex items-center gap-2">
                         <i class="fas fa-home text-sm opacity-70"></i>Home
@@ -140,10 +141,39 @@
                     </button>
                 </div>
 
-                <!-- Mobile menu button can go here -->
+                <!-- Mobile Menu Buttons -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <!-- Dark Mode Toggle (Mobile) -->
+                    <button onclick="toggleDarkMode()" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-slate-800 transition-colors">
+                        <i id="theme-icon-mobile" class="fas fa-moon dark:text-yellow-400"></i>
+                    </button>
+                    <!-- Hamburger Button -->
+                    <button onclick="toggleMobileMenu()" id="hamburger-btn" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-200 dark:bg-slate-800 transition-colors">
+                        <i id="hamburger-icon" class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="/" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors font-semibold">
+                    <i class="fas fa-home text-primary-500 w-5"></i>Home
+                </a>
+                <a href="/activity" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors font-semibold">
+                    <i class="fas fa-calendar-alt text-primary-500 w-5"></i>Activities
+                </a>
+                <a href="/profile" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors font-semibold">
+                    <i class="fas fa-user text-primary-500 w-5"></i>Profile
+                </a>
+                <a href="/education" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors font-semibold">
+                    <i class="fas fa-graduation-cap text-primary-500 w-5"></i>Education
+                </a>
             </div>
         </div>
     </nav>
+
 
     <!-- Main Content -->
     <main class="min-h-[70vh]">
@@ -230,28 +260,46 @@
     <script>
         function toggleDarkMode() {
             const html = document.documentElement;
-            const icon = document.getElementById('theme-icon');
+            const icons = document.querySelectorAll('#theme-icon, #theme-icon-mobile');
             const isDark = html.classList.toggle('dark');
             localStorage.setItem('darkMode', isDark);
             
-            if (isDark) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                icon.classList.add('text-yellow-400');
+            icons.forEach(icon => {
+                if (isDark) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    icon.classList.add('text-yellow-400');
+                } else {
+                    icon.classList.replace('fa-sun', 'fa-moon');
+                    icon.classList.remove('text-yellow-400');
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('hamburger-icon');
+            
+            menu.classList.toggle('hidden');
+            
+            if (menu.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-bars');
             } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                icon.classList.remove('text-yellow-400');
+                icon.classList.replace('fa-bars', 'fa-times');
             }
         }
 
-        // Initialize icon
+        // Initialize icons
         document.addEventListener('DOMContentLoaded', () => {
             const isDark = document.documentElement.classList.contains('dark');
-            const icon = document.getElementById('theme-icon');
-            if (isDark) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                icon.classList.add('text-yellow-400');
-            }
+            const icons = document.querySelectorAll('#theme-icon, #theme-icon-mobile');
+            icons.forEach(icon => {
+                if (isDark) {
+                    icon.classList.replace('fa-moon', 'fa-sun');
+                    icon.classList.add('text-yellow-400');
+                }
+            });
         });
     </script>
+
 </body>
 </html>
