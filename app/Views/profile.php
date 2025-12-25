@@ -2,165 +2,182 @@
 
 <?= $this->section('content') ?>
 
-<!-- Page Header with Gradient -->
-<section class="relative bg-gradient-to-r from-purple-600 via-pink-600 to-purple-700 text-white py-24 overflow-hidden">
+<!-- Centered Profile Header -->
+<section class="relative py-32 overflow-hidden bg-slate-900">
+    <!-- Sophisticated Background Elements -->
     <div class="absolute inset-0">
-        <div class="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-300/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#1e293b,0%,#0f172a_100%)]"></div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-10" style="background-image: radial-gradient(#38bdf8 1px, transparent 1px); background-size: 40px 40px;"></div>
     </div>
     
     <div class="container mx-auto px-4 relative z-10">
-        <div class="text-center fade-in-up">
-            <span class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-4">
-                <i class="fas fa-id-card mr-2"></i>My CV
-            </span>
-            <h1 class="text-6xl font-black mb-4">
-                Professional <span class="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">Profile</span>
+        <div class="max-w-4xl mx-auto text-center fade-in-up">
+            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-bold uppercase tracking-[0.2em] mb-8 animate-float">
+                <span class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-primary-500"></span>
+                </span>
+                Identity Authentication
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
+                Person of <span class="gradient-text">Interest.</span>
             </h1>
-            <p class="text-xl text-purple-100 max-w-2xl mx-auto">Complete biodata and career information</p>
+            <p class="text-xl text-slate-400 font-light leading-relaxed max-w-2xl mx-auto">
+                Comprehensive professional record and identity metrics for our community contributors.
+            </p>
         </div>
     </div>
 </section>
 
-<!-- Profile Section -->
-<section class="py-16 bg-gradient-to-br from-gray-50 to-white">
+<!-- Centered Main Content -->
+<section class="py-20 -mt-20 relative z-20">
     <div class="container mx-auto px-4">
-        <!-- Enhanced Search and Filter -->
-        <div class="max-w-5xl mx-auto mb-12">
-            <div class="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100">
-                <form method="GET" action="/profile" class="flex flex-wrap gap-6">
-                    <div class="flex-1 min-w-[300px]">
-                        <label class="block text-sm font-bold text-gray-700 mb-3">
-                            <i class="fas fa-search mr-2 text-purple-600"></i>Search Profile
-                        </label>
+        <!-- Minimal Centered Search -->
+        <div class="max-w-3xl mx-auto mb-24">
+            <div class="glass p-2 rounded-[2.5rem] shadow-2xl border border-white/20 dark:border-slate-800">
+                <form method="GET" action="/profile" class="flex flex-col md:flex-row items-center gap-2 p-2 bg-white/40 dark:bg-slate-900/40 rounded-[2rem]">
+                    <div class="flex-grow w-full relative group">
+                        <i class="fas fa-fingerprint absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary-500 transition-all duration-300"></i>
                         <input type="text" name="search" value="<?= esc($search) ?>" 
-                               placeholder="Search by name, email, or address..." 
-                               class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-500 focus:outline-none transition-all text-lg">
+                               placeholder="Scan by identity attributes..." 
+                               class="w-full pl-16 pr-6 py-5 bg-white/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl border-2 border-transparent focus:border-primary-500/30 outline-none transition-all dark:text-white shadow-inner font-medium text-lg">
                     </div>
-                    <div class="w-48">
-                        <label class="block text-sm font-bold text-gray-700 mb-3">
-                            <i class="fas fa-sort mr-2 text-purple-600"></i>Sort By
-                        </label>
-                        <select name="sort_by" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-500 appearance-none bg-white text-lg font-medium">
-                            <option value="name" <?= $sortBy === 'name' ? 'selected' : '' ?>>Name</option>
-                            <option value="email" <?= $sortBy === 'email' ? 'selected' : '' ?>>Email</option>
-                            <option value="created_at" <?= $sortBy === 'created_at' ? 'selected' : '' ?>>Created</option>
-                        </select>
-                    </div>
-                    <div class="w-32">
-                        <label class="block text-sm font-bold text-gray-700 mb-3">Order</label>
-                        <select name="sort_order" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-200 focus:border-purple-500 appearance-none bg-white text-lg font-medium">
-                            <option value="ASC" <?= $sortOrder === 'ASC' ? 'selected' : '' ?>>↑ ASC</option>
-                            <option value="DESC" <?= $sortOrder === 'DESC' ? 'selected' : '' ?>>↓ DESC</option>
-                        </select>
-                    </div>
-                    <div class="flex items-end">
-                        <button type="submit" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 font-bold text-lg">
-                            <i class="fas fa-filter mr-2"></i>Apply
-                        </button>
-                    </div>
+                    
+                    <button type="submit" class="w-full md:w-auto px-10 py-5 bg-primary-600 hover:bg-primary-500 shadow-xl shadow-primary-600/30 text-white font-black rounded-2xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3">
+                        <i class="fas fa-radar animate-pulse"></i>
+                        <span>SEARCH</span>
+                    </button>
                 </form>
+                
+                <!-- Quick Filter Pills -->
+                <div class="flex flex-wrap justify-center gap-3 mt-6 pb-2">
+                    <a href="/profile?sort_by=name&sort_order=<?= ($sortOrder ?? 'ASC') === 'ASC' ? 'DESC' : 'ASC' ?>" class="px-5 py-2 bg-white/50 dark:bg-slate-800/50 rounded-full text-sm font-bold text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:bg-primary-500 hover:text-white transition-all">
+                        <i class="fas fa-user-tag mr-2"></i>Name <?= ($sortBy ?? '') === 'name' ? (($sortOrder ?? 'ASC') === 'ASC' ? '↑' : '↓') : '' ?>
+                    </a>
+                    <a href="/profile?sort_by=created_at&sort_order=DESC" class="px-5 py-2 bg-white/50 dark:bg-slate-800/50 rounded-full text-sm font-bold text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700 hover:bg-primary-500 hover:text-white transition-all">
+                        <i class="fas fa-clock mr-2"></i>Newest
+                    </a>
+                </div>
             </div>
         </div>
 
         <?php if (!empty($profiles)): ?>
-            <div class="flex justify-center">
-                <div class="w-full max-w-4xl">
-                    <?php foreach ($profiles as $profile): ?>
-                        <div class="group relative">
-                            <!-- Glow Effect -->
-                            <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 rounded-3xl blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-500"></div>
+            <div class="max-w-4xl mx-auto space-y-24">
+                <?php foreach ($profiles as $profile): ?>
+                    <div class="group relative py-10">
+                        <!-- Connecting Line for Visual Flow -->
+                        <div class="absolute left-1/2 top-0 bottom-0 w-px bg-slate-200 dark:bg-slate-800 -z-10 hidden md:block"></div>
+                        
+                        <!-- High-End centered Card -->
+                        <div class="relative bg-white dark:bg-slate-900 rounded-[3rem] p-12 md:p-16 border border-slate-200 dark:border-slate-800 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] transition-all duration-700 hover:shadow-[0_60px_120px_-20px_rgba(0,0,0,0.2)]">
                             
-                            <div class="relative bg-white p-12 rounded-3xl shadow-2xl border border-gray-100 transform transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl">
-                                <!-- Centered Vertical Layout -->
-                                <div class="flex flex-col items-center text-center">
-                                    <!-- Photo Section - Larger -->
-                                    <div class="mb-8">
+                            <!-- Large Centered Photo -->
+                            <div class="flex flex-col items-center mb-12">
+                                <div class="relative group/photo mb-8">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-primary-500 to-purple-600 rounded-[3rem] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                                    <div class="relative w-48 h-48 md:w-64 md:h-64 rounded-[2.5rem] overflow-hidden border-8 border-white dark:border-slate-800 shadow-2xl">
                                         <?php if ($profile['photo']): ?>
-                                            <div class="relative">
-                                                <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-2xl opacity-50"></div>
-                                                <img src="<?= base_url('uploads/' . $profile['photo']) ?>" 
-                                                     alt="<?= esc($profile['name']) ?>" 
-                                                     class="relative w-48 h-48 rounded-full object-cover border-8 border-white shadow-2xl group-hover:scale-105 transition-transform duration-300">
-                                            </div>
+                                            <img src="<?= base_url('uploads/' . $profile['photo']) ?>" 
+                                                 alt="<?= esc($profile['name']) ?>" 
+                                                 class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transform group-hover:scale-105 transition-all duration-700">
                                         <?php else: ?>
-                                            <div class="w-48 h-48 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center shadow-2xl border-8 border-white">
-                                                <i class="fas fa-user text-8xl text-white"></i>
+                                            <div class="w-full h-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                                                <i class="fas fa-user-secret text-7xl text-slate-300 dark:text-slate-700"></i>
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    
-                                    <!-- Name - Larger -->
-                                    <h3 class="text-5xl font-black text-gray-800 mb-8 group-hover:text-purple-600 transition-colors">
-                                        <?= esc($profile['name']) ?>
-                                    </h3>
-                                    
-                                    <!-- Contact Info Cards - Larger -->
-                                    <div class="w-full max-w-2xl space-y-6 mb-8">
-                                        <div class="flex items-center bg-purple-50 p-6 rounded-2xl border border-purple-100 shadow-lg">
-                                            <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                                                <i class="fas fa-envelope text-white text-2xl"></i>
-                                            </div>
-                                            <div class="ml-6 text-left">
-                                                <p class="text-sm text-gray-500 font-medium mb-1">Email Address</p>
-                                                <p class="text-gray-800 font-bold text-xl"><?= esc($profile['email']) ?></p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="flex items-center bg-pink-50 p-6 rounded-2xl border border-pink-100 shadow-lg">
-                                            <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl flex items-center justify-center">
-                                                <i class="fas fa-phone text-white text-2xl"></i>
-                                            </div>
-                                            <div class="ml-6 text-left">
-                                                <p class="text-sm text-gray-500 font-medium mb-1">Phone Number</p>
-                                                <p class="text-gray-800 font-bold text-xl"><?= esc($profile['phone']) ?></p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="flex items-start bg-purple-50 p-6 rounded-2xl border border-purple-100 shadow-lg">
-                                            <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                                                <i class="fas fa-map-marker-alt text-white text-2xl"></i>
-                                            </div>
-                                            <div class="ml-6 text-left">
-                                                <p class="text-sm text-gray-500 font-medium mb-1">Address</p>
-                                                <p class="text-gray-800 font-bold text-xl"><?= esc($profile['address']) ?></p>
-                                            </div>
-                                        </div>
+                                    <div class="absolute -bottom-4 -left-4 bg-primary-600 text-white px-6 py-2 rounded-2xl font-black text-sm shadow-xl rotate-[-5deg]">
+                                        VERIFIED IDENTITY
                                     </div>
-                                    
-                                    <!-- Summary Card - Larger -->
-                                    <?php if ($profile['summary']): ?>
-                                        <div class="w-full max-w-3xl bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-l-8 border-purple-500 shadow-lg">
-                                            <h4 class="flex items-center justify-center font-black text-purple-700 mb-6 text-2xl">
-                                                <i class="fas fa-quote-left mr-3"></i>Professional Summary
-                                            </h4>
-                                            <p class="text-gray-700 leading-relaxed text-lg"><?= nl2br(esc($profile['summary'])) ?></p>
+                                </div>
+                                
+                                <h3 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white text-center leading-none tracking-tighter">
+                                    <?= esc($profile['name']) ?>
+                                </h3>
+                                <p class="text-primary-500 dark:text-primary-400 font-bold tracking-[0.3em] uppercase mt-4 text-sm">Level: Community Contributor</p>
+                            </div>
+
+                            <!-- Centered Info Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                                <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-100 dark:border-slate-700 group/item hover:bg-white dark:hover:bg-slate-800 transition-all">
+                                    <div class="flex items-center gap-4 mb-2">
+                                        <div class="w-10 h-10 rounded-xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600">
+                                            <i class="fas fa-envelope-open"></i>
                                         </div>
-                                    <?php endif; ?>
+                                        <span class="text-xs font-black uppercase text-slate-400">Communication Terminal</span>
+                                    </div>
+                                    <p class="text-lg font-bold text-slate-800 dark:text-slate-200"><?= esc($profile['email']) ?></p>
+                                </div>
+                                
+                                <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-3xl border border-slate-100 dark:border-slate-700 group/item hover:bg-white dark:hover:bg-slate-800 transition-all">
+                                    <div class="flex items-center gap-4 mb-2">
+                                        <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-600">
+                                            <i class="fas fa-mobile-android"></i>
+                                        </div>
+                                        <span class="text-xs font-black uppercase text-slate-400">Secure Line</span>
+                                    </div>
+                                    <p class="text-lg font-bold text-slate-800 dark:text-slate-200"><?= esc($profile['phone']) ?></p>
+                                </div>
+                            </div>
+                            
+                            <!-- Address Block -->
+                            <div class="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-3xl border border-slate-100 dark:border-slate-700 mb-12">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div class="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-600">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                    </div>
+                                    <span class="text-xs font-black uppercase text-slate-400">Geographic Base</span>
+                                </div>
+                                <p class="text-xl font-medium text-slate-800 dark:text-slate-200 leading-relaxed"><?= esc($profile['address']) ?></p>
+                            </div>
+
+                            <!-- Personal Manifest Card -->
+                            <?php if ($profile['summary']): ?>
+                                <div class="relative">
+                                    <div class="absolute -top-6 -left-2 text-6xl text-primary-500/20 font-serif">"</div>
+                                    <div class="bg-white dark:bg-slate-900 p-10 rounded-[2.5rem] border-2 border-primary-500/10 shadow-inner">
+                                        <h4 class="text-xs font-black uppercase tracking-[0.2em] text-primary-600 mb-6">Personal Manifest</h4>
+                                        <p class="text-2xl font-light text-slate-600 dark:text-slate-300 leading-loose">
+                                            <?= nl2br(esc($profile['summary'])) ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            
+                            <!-- Action Bar -->
+                            <div class="mt-16 pt-8 border-t border-slate-100 dark:border-slate-700 flex flex-col md:flex-row justify-between items-center gap-6">
+                                <div class="text-xs font-bold text-slate-400">REFERENCE ID: #<?= str_pad($profile['id'], 6, '0', STR_PAD_LEFT) ?></div>
+                                <div class="flex gap-4">
+                                    <button class="px-8 py-3 bg-slate-900 dark:bg-white dark:text-slate-900 text-white rounded-xl font-black text-sm transition-all hover:bg-primary-600 hover:text-white">DOWNLOAD DOSSIER</button>
+                                    <button class="w-12 h-12 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary-500 hover:text-white transition-all">
+                                        <i class="fas fa-share-alt"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
 
-            <!-- Enhanced Pagination -->
-            <?php if ($pager): ?>
-                <div class="mt-16 flex justify-center">
-                    <div class="bg-white rounded-2xl shadow-xl px-8 py-5 border border-gray-100">
+            <!-- Redesigned Centered Pagination -->
+            <?php if (isset($pager)): ?>
+                <div class="mt-32 flex justify-center pb-20">
+                    <div class="inline-flex items-center gap-4 p-3 glass rounded-3xl border border-white/20 shadow-2xl">
                         <?= $pager->links() ?>
                     </div>
                 </div>
             <?php endif; ?>
+
         <?php else: ?>
-            <div class="text-center py-24">
-                <div class="inline-block bg-gray-100 p-8 rounded-full mb-6">
-                    <i class="fas fa-user-slash text-6xl text-gray-400"></i>
+            <div class="max-w-2xl mx-auto py-32 text-center">
+                <div class="w-32 h-32 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-10 animate-bounce">
+                    <i class="fas fa-search text-5xl text-slate-300 dark:text-slate-700"></i>
                 </div>
-                <p class="text-2xl text-gray-500 font-bold mb-4">No profile data available</p>
-                <p class="text-gray-400 mb-8">Add your profile information to get started</p>
-                <a href="/" class="inline-block bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
-                    <i class="fas fa-home mr-2"></i>Back to Home
+                <h3 class="text-4xl font-black text-slate-900 dark:text-white mb-4 tracking-tighter">Zero Metrics Found</h3>
+                <p class="text-slate-500 dark:text-slate-400 text-xl font-light mb-12">The identity attributes provided did not match any records in our database.</p>
+                <a href="/profile" class="inline-flex items-center gap-3 px-10 py-5 bg-primary-600 text-white font-black rounded-2xl shadow-2xl shadow-primary-600/30 hover:bg-primary-500 transition-all">
+                    <span>CLEAR SEARCH PROTOCOL</span>
+                    <i class="fas fa-undo"></i>
                 </a>
             </div>
         <?php endif; ?>

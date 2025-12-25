@@ -3,7 +3,7 @@
 <?= $this->section('content') ?>
 
 <!-- Page Header -->
-<section class="relative bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white py-24 overflow-hidden">
+<section class="relative bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 dark:from-slate-900 dark:via-emerald-900 dark:to-slate-900 text-white py-24 overflow-hidden">
     <div class="absolute inset-0">
         <div class="absolute top-10 left-10 w-64 h-64 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
         <div class="absolute bottom-10 right-10 w-80 h-80 bg-teal-300/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
@@ -11,45 +11,45 @@
     
     <div class="container mx-auto px-4 relative z-10">
         <div class="text-center fade-in-up">
-            <span class="inline-block bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full mb-4">
+            <span class="inline-block bg-white/20 dark:bg-slate-800/40 backdrop-blur-sm px-6 py-2 rounded-full mb-4">
                 <i class="fas fa-book-open mr-2"></i>Learning Journey
             </span>
             <h1 class="text-6xl font-black mb-4">
                 Education <span class="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">History</span>
             </h1>
-            <p class="text-xl text-emerald-100 max-w-2xl mx-auto">My educational journey from elementary to university</p>
+            <p class="text-xl text-emerald-100 dark:text-slate-300 max-w-2xl mx-auto">My educational journey from elementary to university</p>
         </div>
     </div>
 </section>
 
 <!-- Education Section -->
-<section class="py-16 bg-gradient-to-br from-gray-50 to-white">
+<section class="py-16 bg-gradient-to-br from-gray-50 to-white dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
     <div class="container mx-auto px-4">
         <!-- Enhanced Search and Filter -->
         <div class="max-w-5xl mx-auto mb-12">
-            <div class="bg-white p-8 rounded-3xl shadow-2xl border border-gray-100">
+            <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-2xl border border-gray-100 dark:border-slate-700">
                 <form method="GET" action="/education" class="flex flex-wrap gap-6">
                     <div class="flex-1 min-w-[300px]">
-                        <label class="block text-sm font-bold text-gray-700 mb-3">
-                            <i class="fas fa-search mr-2 text-emerald-600"></i>Search Education
+                        <label class="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-3">
+                            <i class="fas fa-search mr-2 text-emerald-600 dark:text-emerald-400"></i>Search Education
                         </label>
                         <input type="text" name="search" value="<?= esc($search) ?>" 
                                placeholder="Search by level or institution..." 
-                               class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-emerald-200 focus:border-emerald-500 focus:outline-none transition-all text-lg">
+                               class="w-full px-6 py-4 bg-white dark:bg-slate-900 border-2 border-gray-200 dark:border-slate-700 rounded-2xl focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-900/50 focus:border-emerald-500 dark:focus:border-emerald-500 focus:outline-none transition-all text-lg dark:text-white">
                     </div>
                     <div class="w-48">
-                        <label class="block text-sm font-bold text-gray-700 mb-3">
-                            <i class="fas fa-sort mr-2 text-emerald-600"></i>Sort By
+                        <label class="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-3">
+                            <i class="fas fa-sort mr-2 text-emerald-600 dark:text-emerald-400"></i>Sort By
                         </label>
-                        <select name="sort_by" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-emerald-200 focus:border-emerald-500 appearance-none bg-white text-lg font-medium">
+                        <select name="sort_by" class="w-full px-6 py-4 border-2 border-gray-200 dark:border-slate-700 rounded-2xl focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-900/50 focus:border-emerald-500 dark:focus:border-emerald-500 appearance-none bg-white dark:bg-slate-900 text-lg font-medium dark:text-white">
                             <option value="start_year" <?= $sortBy === 'start_year' ? 'selected' : '' ?>>Start Year</option>
                             <option value="level" <?= $sortBy === 'level' ? 'selected' : '' ?>>Level</option>
                             <option value="institution_name" <?= $sortBy === 'institution_name' ? 'selected' : '' ?>>Institution</option>
                         </select>
                     </div>
                     <div class="w-32">
-                        <label class="block text-sm font-bold text-gray-700 mb-3">Order</label>
-                        <select name="sort_order" class="w-full px-6 py-4 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-emerald-200 focus:border-emerald-500 appearance-none bg-white text-lg font-medium">
+                        <label class="block text-sm font-bold text-gray-700 dark:text-slate-300 mb-3">Order</label>
+                        <select name="sort_order" class="w-full px-6 py-4 border-2 border-gray-200 dark:border-slate-700 rounded-2xl focus:ring-4 focus:ring-emerald-200 dark:focus:ring-emerald-900/50 focus:border-emerald-500 dark:focus:border-emerald-500 appearance-none bg-white dark:bg-slate-900 text-lg font-medium dark:text-white">
                             <option value="ASC" <?= $sortOrder === 'ASC' ? 'selected' : '' ?>>↑ ASC</option>
                             <option value="DESC" <?= $sortOrder === 'DESC' ? 'selected' : '' ?>>↓ DESC</option>
                         </select>
@@ -74,7 +74,7 @@
                         <?php foreach ($education as $index => $edu): ?>
                             <div class="relative <?= $index % 2 === 0 ? 'md:pr-1/2' : 'md:pl-1/2 md:text-right' ?>">
                                 <!-- Timeline Node -->
-                                <div class="absolute left-8 md:left-1/2 w-6 h-6 bg-white border-4 
+                                <div class="absolute left-8 md:left-1/2 w-6 h-6 bg-white dark:bg-slate-900 border-4 
                                     <?php
                                     switch($edu['level']) {
                                         case 'SD': echo 'border-green-500'; break;
@@ -100,10 +100,10 @@
                                             default: echo 'bg-gradient-to-r from-gray-300 to-gray-400';
                                         }
                                         ?>
-                                        rounded-3xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500">
+                                        rounded-3xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 focus-within:opacity-40">
                                     </div>
                                     
-                                    <div class="relative bg-white p-8 rounded-3xl shadow-xl border-l-8
+                                    <div class="relative bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border-l-8
                                         <?php
                                         switch($edu['level']) {
                                             case 'SD': echo 'border-green-500'; break;
@@ -115,7 +115,7 @@
                                         ?>
                                         group-hover:-translate-y-2 transition-all duration-300">
                                         
-                                        <div class="flex flex-wrap items-center gap-3 mb-4">
+                                        <div class="flex flex-wrap items-center gap-3 mb-4 <?= $index % 2 === 0 ? '' : 'md:justify-end' ?>">
                                             <span class="px-5 py-2 rounded-full text-sm font-black shadow-lg
                                                 <?php
                                                 switch($edu['level']) {
@@ -129,20 +129,20 @@
                                                 <i class="fas fa-graduation-cap mr-2"></i>
                                                 <?= esc($edu['level']) ?>
                                             </span>
-                                            <span class="bg-gray-100 px-4 py-2 rounded-full text-gray-700 font-bold text-sm flex items-center">
-                                                <i class="fas fa-calendar-alt mr-2 text-emerald-600"></i>
+                                            <span class="bg-gray-100 dark:bg-slate-900 px-4 py-2 rounded-full text-gray-700 dark:text-slate-300 font-bold text-sm flex items-center">
+                                                <i class="fas fa-calendar-alt mr-2 text-emerald-600 dark:text-emerald-400"></i>
                                                 <?= esc($edu['start_year']) ?> - <?= $edu['end_year'] ? esc($edu['end_year']) : 'Present' ?>
                                             </span>
                                         </div>
                                         
-                                        <h3 class="text-2xl font-black text-gray-800 mb-3 group-hover:text-emerald-600 transition-colors">
-                                            <i class="fas fa-school text-emerald-600 mr-2"></i>
+                                        <h3 class="text-2xl font-black text-gray-800 dark:text-white mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                                            <i class="fas fa-school text-emerald-600 dark:text-emerald-400 mr-2"></i>
                                             <?= esc($edu['institution_name']) ?>
                                         </h3>
                                         
                                         <?php if ($edu['description']): ?>
-                                            <div class="mt-4 bg-gray-50 p-4 rounded-2xl border border-gray-200">
-                                                <p class="text-gray-700 leading-relaxed"><?= nl2br(esc($edu['description'])) ?></p>
+                                            <div class="mt-4 bg-gray-50 dark:bg-slate-900/50 p-4 rounded-2xl border border-gray-200 dark:border-slate-700">
+                                                <p class="text-gray-700 dark:text-slate-300 leading-relaxed"><?= nl2br(esc($edu['description'])) ?></p>
                                             </div>
                                         <?php endif; ?>
                                     </div>
@@ -155,7 +155,7 @@
                 <!-- Enhanced Pagination -->
                 <?php if ($pager): ?>
                     <div class="mt-16 flex justify-center">
-                        <div class="bg-white rounded-2xl shadow-xl px-8 py-5 border border-gray-100">
+                        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl px-8 py-5 border border-gray-100 dark:border-slate-700">
                             <?= $pager->links() ?>
                         </div>
                     </div>
@@ -163,11 +163,11 @@
             </div>
         <?php else: ?>
             <div class="text-center py-24">
-                <div class="inline-block bg-gray-100 p-8 rounded-full mb-6">
-                    <i class="fas fa-book-open text-6xl text-gray-400"></i>
+                <div class="inline-block bg-gray-100 dark:bg-slate-800 p-8 rounded-full mb-6">
+                    <i class="fas fa-book-open text-6xl text-gray-400 dark:text-slate-600"></i>
                 </div>
-                <p class="text-2xl text-gray-500 font-bold mb-4">No education records available</p>
-                <p class="text-gray-400 mb-8">Add your education history to showcase your learning journey</p>
+                <p class="text-2xl text-gray-500 dark:text-slate-400 font-bold mb-4">No education records available</p>
+                <p class="text-gray-400 dark:text-slate-500 mb-8">Add your education history to showcase your learning journey</p>
                 <a href="/" class="inline-block bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl font-bold shadow-lg hover:shadow-2xl transition-all transform hover:scale-105">
                     <i class="fas fa-home mr-2"></i>Back to Home
                 </a>
